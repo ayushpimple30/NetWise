@@ -1,34 +1,77 @@
-# Teaching Internet Basics — NetWise
-A Flask and MySQL learning portal for teaching safe, effective everyday Internet use. Students work through database-backed lessons, tracked progress, scored quizzes, feedback and surveys; administrators manage learning content and review operational data.
+# 🌐 NetWise ~ Teaching Internet Basics
 
-## Stack
-Python 3, Flask, SQLAlchemy, Flask-Migrate, Flask-Login, Flask-WTF, MySQL (production), SQLite (local testing), Bootstrap 5 and Jinja2.
+A Flask + MySQL learning portal for teaching safe, effective everyday Internet use. Students work through database-backed lessons, track progress, take scored quizzes, and give feedback. Admins manage content and review analytics.
 
-## Setup
-1. `python -m venv .venv && source .venv/bin/activate`
-2. `pip install -r requirements.txt`
-3. `cp .env.example .env` and set a strong `SECRET_KEY` and MySQL `DATABASE_URL`.
-4. Create the MySQL database named in the URL. For local SQLite, use `DATABASE_URL=sqlite:///instance/portal.db`.
-5. `flask --app run.py db init` (once), then `flask --app run.py db migrate -m "initial schema" && flask --app run.py db upgrade`.
-6. `python seed/seed.py`, then `flask --app run.py run`.
+![Python](https://img.shields.io/badge/Python-3-blue)
+![Flask](https://img.shields.io/badge/Flask-backend-black)
+![MySQL](https://img.shields.io/badge/MySQL-production-orange)
+![License](https://img.shields.io/badge/license-see%20LICENSE-green)
 
-## Development accounts
-Seeded accounts are **development-only**: `admin@netwise.local` / `ChangeMe123!` and `student@netwise.local` / `Student123!`. Replace or remove these before deployment.
+---
 
-## Tests
-Run `pytest`. Tests use isolated SQLite data and CSRF is enabled in production/development.
+## ✨ Features
 
-## Security
-Secrets stay in environment variables. Passwords use Werkzeug hashes; protected routes enforce roles server-side; CSRF, ORM parameterisation, secure cookie settings and baseline security headers are enabled.
+- 📚 6 curriculum areas, 60 lessons, 15 quiz questions per module
+- 📈 Progress tracking, quiz scoring, feedback + survey collection
+- 🛠️ Admin dashboard w/ Chart.js — module completion, quiz performance, feedback ratings
+- 🔐 Role-based access, CSRF protection, hashed passwords, secure cookies
 
-## Screenshots
-Capture deployment screenshots here for the academic report.
+## 🧱 Stack
 
-## Future enhancements
-Email notifications, granular admin audit logs, content image uploads with validation, and server-generated PDF certificates.
+Python 3 · Flask · SQLAlchemy · Flask-Migrate · Flask-Login · Flask-WTF · MySQL (prod) · SQLite (local) · Bootstrap 5 · Jinja2
 
-## Curriculum and analytics
-The seed contains six authored curriculum areas, sixty lessons, and fifteen quiz questions per module. Student and administrator screens calculate progress, quiz outcomes, completion and feedback metrics from database records. The admin dashboard uses Chart.js for module completion, quiz performance, and feedback-rating views.
+## 🚀 Setup
 
-## Production deployment
-Set `FLASK_ENV=production`, a long random `SECRET_KEY`, a MySQL `DATABASE_URL`, and serve the WSGI application `run:app` behind HTTPS. Do not run seeded development credentials in production.
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env   # set SECRET_KEY and MySQL DATABASE_URL
+
+# create MySQL DB named in URL, or for local SQLite:
+# DATABASE_URL=sqlite:///instance/portal.db
+
+flask --app run.py db init
+flask --app run.py db migrate -m "initial schema"
+flask --app run.py db upgrade
+
+python seed/seed.py
+flask --app run.py run
+```
+
+## 👤 Dev accounts (development-only!)
+
+| Role    | Email                  | Password       |
+|---------|-------------------------|----------------|
+| Admin   | admin@netwise.local     | ChangeMe123!   |
+| Student | student@netwise.local   | Student123!    |
+
+⚠️ Replace/remove before deployment.
+
+## 🧪 Tests
+
+```bash
+pytest
+```
+Uses isolated SQLite data; CSRF enabled in prod/dev.
+
+## 🔒 Security
+
+Secrets in env vars · Werkzeug password hashes · server-side role checks · CSRF · ORM parameterisation · secure cookies · baseline security headers.
+
+## 📦 Production
+
+```bash
+FLASK_ENV=production
+```
+Set long random `SECRET_KEY`, MySQL `DATABASE_URL`, serve `run:app` (WSGI) behind HTTPS. No seeded dev creds in prod.
+
+## 🗺️ Roadmap
+
+- Email notifications
+- Granular admin audit logs
+- Content image uploads w/ validation
+- Server-generated PDF certificates
+
+## 📄 License
+
+See [LICENSE](LICENSE).
