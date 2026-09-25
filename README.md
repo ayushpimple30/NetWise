@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🌱 goGreen
 
 With **goGreen**, you can make your profile look like you've been hard at work... even if you haven't. 
@@ -47,3 +48,6 @@ So, you've got the basics down. What's next?
 ## Credits
 
 
+=======
+# Victor
+>>>>>>> 4d5bc380df0a26cbe64ed5f2b0f76d4cf52d55d9
